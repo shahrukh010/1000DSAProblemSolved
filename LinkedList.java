@@ -12,7 +12,9 @@ public class LinkedList {
     }
 
     private static Node first;
+    private static Node second;//for second linkedList point to first node
     private static Node tail;
+    private static Node last;//point to last node of second List
     private static int size=0;
 
 
@@ -102,6 +104,24 @@ public class LinkedList {
             }
     }
 
+    public static void add(int data){
+
+        Node newNode = new Node(data);
+        newNode.next = null;
+
+        if(second==null){
+            second = newNode;
+            last  = second;
+//            size++;
+        }
+        else{
+            last.next = newNode;
+            last = newNode;
+            last.next = null;
+ //           size++;
+            }
+    }
+
     public void addNode(int data,int pos){
 
             Node newNode = new Node(data);
@@ -177,11 +197,19 @@ public class LinkedList {
             }
     }
 
+    public void display(){
+
+        Node current = second;
+        while(current!=null){
+            System.out.print(current.data+" ");
+            current = current.next;
+        }
+    }
+
 
 
    public String toString(){
 
-        System.out.println("Recursivly Display");
         Node current = first;
         java.util.ArrayList<Integer> result = new java.util.ArrayList<Integer>();
         while(current!=null){
