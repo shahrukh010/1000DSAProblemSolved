@@ -15,6 +15,23 @@ public class LinkedList {
     private static Node tail;
     private static int size=0;
 
+
+    public void reverse(){
+
+        Node p = first;
+        Node q = null;
+        Node r = null;
+
+        while(p!=null){
+            r=q;
+            q=p;
+            p=p.next;
+            q.next = r;
+        }
+        first=q;
+    }
+
+
     public boolean isSorted(){
 
         Node current = first;
