@@ -18,6 +18,58 @@ public class LinkedList {
     private static int size=0;
 
 
+
+
+
+    public Node getFirst(){
+        return this.first;
+    }
+    public Node getSecond(){
+
+        return this.second;
+    }
+    
+    public void merge(Node firstList,Node secondList){
+
+        
+        Node fl =firstList;
+        Node sl =secondList;
+        Node last = null;
+
+        if(fl.data < sl.data){
+            last = fl;
+            fl = fl.next;
+            last.next = null;
+        }
+        else{
+            last =sl;
+            sl =sl.next;
+            last.next = null;
+        }
+
+
+            while(fl !=null && sl !=null){
+
+                if(fl.data < sl.data){
+
+                    last.next = fl;
+                    last = fl;
+                    fl = fl.next;
+                    last.next = null;
+                }
+                else{
+
+                    last.next = sl;
+                    last = sl;
+                    sl = sl.next;
+                    last.next = null;
+                }
+            }
+
+            if(fl !=null)last.next = fl;
+            else
+                last.next = sl;
+    }
     public void reverse(){
 
             
