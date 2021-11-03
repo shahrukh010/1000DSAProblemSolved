@@ -18,6 +18,10 @@ public class LinkedList {
 
     public void reverse(){
 
+            
+            recursiveReverse(null,first);
+//iteratieve reverse
+/*
         Node p = first;
         Node q = null;
         Node r = null;
@@ -29,8 +33,19 @@ public class LinkedList {
             q.next = r;
         }
         first=q;
+*/
     }
 
+    private void recursiveReverse(Node q,Node p){
+
+        if(p !=null){
+            recursiveReverse(p,p.next);
+            p.next = q;
+        }
+        else{
+            first =q;
+        }
+    }
 
     public boolean isSorted(){
 
