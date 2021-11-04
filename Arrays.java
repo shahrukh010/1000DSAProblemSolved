@@ -17,8 +17,29 @@ public class Arrays {
     }
 
 
-    //maximum defference such that arr[j] - arr[i] such that j>i;
+//print frequences of sorted array
+    java.util.function.Consumer<int[]> frequence = (input)->{
 
+        int start = 1;
+        int n = input.length;
+        int freq  = 1;
+
+        while(start < n){
+
+            
+            while(start < n && input[start] == input[start-1]){
+
+                freq++;
+                start++;
+            }
+            System.out.println(input[start-1]+" :"+freq);
+            freq = 1;
+            start++;
+        }
+           
+    };
+    
+    //maximum defference such that arr[j] - arr[i] such that j>i;
     java.util.function.Function<int[],Integer> maxDiff = (arr)->{
 
         int min = arr[0];
