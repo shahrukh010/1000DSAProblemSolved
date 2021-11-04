@@ -16,6 +16,36 @@ public class Arrays {
         arr = new int[capacity];
     }
 
+
+    //maximum defference such that arr[j] - arr[i] such that j>i;
+
+    java.util.function.Function<int[],Integer> maxDiff = (arr)->{
+
+        int min = arr[0];
+        int res = arr[1] - arr[0];
+
+        for(int i=1;i<size;i++){
+
+            res = Math.max(arr[i] - min,res);
+            min = Math.min(arr[i],min);
+        }
+        return res;
+    };
+
+    public void leader(int[]arr){
+
+        int currentLeader = arr[size-1];
+        System.out.print(currentLeader+" ");
+        for(int i=size-2;i>=0;i--){
+            
+            if(currentLeader < arr[i]){
+                System.out.print(arr[i]+" ");
+                currentLeader = arr[i];
+            }
+        }
+
+        System.out.println();
+    }
     public void leftRotate(int[]arr,int d){
 
         for(int i=0;i<d;i++){
@@ -23,6 +53,8 @@ public class Arrays {
         }
 
     }
+
+
     private void rotate(int[]arr){
 
         int tmp = arr[0];
