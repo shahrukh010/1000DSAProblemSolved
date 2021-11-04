@@ -16,6 +16,23 @@ public class Arrays {
         arr = new int[capacity];
     }
 
+    public void leftRotate(int[]arr,int d){
+
+        for(int i=0;i<d;i++){
+            rotate(arr);
+        }
+
+    }
+    private void rotate(int[]arr){
+
+        int tmp = arr[0];
+        int i =0;
+        for(;i<arr.length-1;i++){
+            arr[i] = arr[i+1];
+        }
+        arr[size-1] = tmp;
+    }
+
 
     public void add(int data){
 
