@@ -16,6 +16,22 @@ public class Arrays {
         arr = new int[capacity];
     }
 
+    java.util.function.Function<int[],Integer> odd_even = (input)->{
+
+            int count = 1;
+            int result= 1;
+        for(int i=1;i<input.length;i++){
+
+            if(input[i]%2==0 && input[i-1] %2!=0 || input[i-1] %2==0 && input[i] %2 !=0){
+                count++;
+                result = Math.max(result,count);
+            }
+            else{
+                count = 1;
+        }
+        }
+        return result;
+    };
 
 //print frequences of sorted array
     java.util.function.Consumer<int[]> frequence = (input)->{
@@ -99,7 +115,7 @@ public class Arrays {
 
     public int[] getArray(){
 
-        return this.arr;
+        return java.util.Arrays.copyOfRange(arr,0,size);
     }
 
 
