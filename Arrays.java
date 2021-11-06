@@ -16,6 +16,41 @@ public class Arrays {
         arr = new int[capacity];
     }
 
+    private int getCandidate(int input[]){
+
+            int cand = input[0];
+            int count= 1;
+        for(int i=1;i<input.length;i++){
+
+            if(input[i] == cand)
+                count++;
+            else{
+                count--;
+                cand = input[i];
+                if(count == 0)count = 1;
+            }
+        }
+        return count;
+
+    }
+
+    java.util.function.Function<int[],Integer> majorityElement = (input)->{
+
+            
+            int candidate = getCandidate(input);
+            int count =0;
+
+            for(int i=0;i<input.length;i++){
+
+                if(input[candidate] == input[i]){
+                    count++;
+                }
+
+                if(count > input.length/2)return input[candidate];
+            }
+            return -1;
+        };
+
     java.util.function.Function<int[],Integer> odd_even = (input)->{
 
             int count = 1;
