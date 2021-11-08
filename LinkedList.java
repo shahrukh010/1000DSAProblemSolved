@@ -21,6 +21,20 @@ public class LinkedList {
 
 
 
+
+  public int middle(){
+
+      Node slow = first;
+      Node fast = first;
+
+      while(fast.next !=null && fast.next.next !=null){
+
+         fast = fast.next.next;
+         slow =slow.next;
+      }
+      return slow.data;
+  }
+
     public Node getFirst(){
         return this.first;
     }
