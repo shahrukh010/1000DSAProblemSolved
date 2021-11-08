@@ -16,6 +16,23 @@ public class Arrays {
         arr = new int[capacity];
     }
 
+
+    java.util.function.BiFunction<int[],Integer,Integer> maxKthSum = (input, k)->{
+
+        int current_max_sum = input[0];
+        int max_sum = Integer.MIN_VALUE;
+        
+        for(int i=1;i<k;i++){
+            current_max_sum +=input[i];
+        }
+            max_sum = current_max_sum;
+        for(int i=k;i<input.length;i++){
+            current_max_sum +=input[i] - input[i-k];
+
+            max_sum = Math.max(current_max_sum,max_sum);
+        }
+        return max_sum;
+    };
     private int getCandidate(int input[]){
 
             int cand = input[0];
