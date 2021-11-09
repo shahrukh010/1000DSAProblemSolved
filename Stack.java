@@ -2,6 +2,62 @@
 public class Stack {
 
     
+    class Node{
+        
+        Node next;
+        int data;
+
+        public Node(int data){
+            this.data = data;
+        }
+    }
+
+    private Node first;
+    private Node last;
+
+    public void add(int value){
+
+        Node newNode = new Node(value);
+        if(this.first==null){
+            this.first = newNode;
+            this.last  = first;
+        }
+        else{
+            newNode.next = first;
+            first = newNode;
+        }
+    }
+
+    public int popNode(){
+
+         int pop = 0;
+        try{
+        Node current = first;
+         pop = current.data;
+        current = current.next;
+        first   = current;
+
+        }
+        catch(NullPointerException e){
+            return-1;
+        }
+
+        return pop;
+    }
+
+    public int peekNode(){
+
+        try{
+        int peek = first.data;
+        return peek;
+        }
+        catch(NullPointerException e){
+            return -1;
+        }
+    }
+
+    
+    //using array implementation of stack
     private int[] array;
     private int size=0;
     private int top=-1;
@@ -60,6 +116,7 @@ public class Stack {
               stack.push(40);
               stack.push(50);
               stack.push(60);
+              System.out.println(stack.size);
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.peek());
@@ -69,6 +126,25 @@ public class Stack {
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.isEmpty());
+        System.out.println("********************");
+        System.out.println("********************");
+             stack.add(100);
+             stack.add(200);
+             stack.add(300);
+             stack.add(400);
+             stack.add(500);
+             stack.add(600);
+        System.out.println(stack.popNode());
+        System.out.println(stack.popNode());
+        System.out.println(stack.popNode());
+        System.out.println(stack.popNode());
+        System.out.println(stack.popNode());
+        System.out.println(stack.popNode());
+        System.out.println(stack.popNode());
+        System.out.println(stack.peekNode());
+
+
+
     }
 
 }
