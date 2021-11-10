@@ -3,6 +3,38 @@ public class Searching {
 
 
 
+    public static boolean search(int[]input, int key){
+
+       int start = 1;
+       if(input[0] == key)return true;
+
+        while(input[start] < key){
+
+            start = start * 2;
+        }
+        boolean flag = binarySearch(input,key,(start/2)+1,start);
+        if(flag)return true;
+        else
+            return false;
+    }
+
+    public static boolean binarySearch(int[]input,int key,int start,int end){
+
+        if(start<=end){
+
+            int mid = ((start+end)/2);
+
+            if(input[mid] == key)return true;
+
+            else if(input[mid] > key)return binarySearch(input,key,start,mid-1);
+
+            else if(input[mid] < key)return binarySearch(input,key,mid+1,end);
+                
+        }
+        return false;
+    }
+
+
     static java.util.function.Function<int[],Integer> countOne = (input)->{
 
             int start = 0;
@@ -98,7 +130,7 @@ public class Searching {
 
     public static void main(String...strings){
                 
-                int[] arr = {10,10,10,20,30,40,50,50,50,50,100,100,100};
+                int[] arr = {10,10,10,20,30,40,50,50,50,50,100,100,100,500,700,900,1200};
                 
                 //System.out.println(binarySearch.test(arr,20));
                 System.out.println(binarySearch.test(arr,70));
@@ -122,6 +154,10 @@ public class Searching {
 
                 int[] input = {0,0,1,1,1};
                 System.out.println(countOne.apply(input));
+                System.out.println(search(arr,-50));
+                System.out.println(search(arr,500));
+                System.out.println(search(arr,1200));
+                
 
     }
 }
