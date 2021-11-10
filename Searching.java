@@ -2,7 +2,27 @@
 public class Searching {
 
 
-    
+
+    static java.util.function.Function<int[],Integer> countOne = (input)->{
+
+            int start = 0;
+            int end = input.length-1;
+            while(start<=end){
+
+                int mid = (start+end)/2;
+
+                if(input[mid] ==0){
+                    start = mid+1;
+                }
+                 if(mid==0 || input[mid-1] !=1){
+                    return input.length - mid;
+                 }
+                else
+                    return end = mid-1;
+            }
+            return 0;
+    };
+
 
     static java.util.function.BiFunction<int[],Integer,Integer>lastIndexOf =(input,data)->{
 
@@ -99,6 +119,9 @@ public class Searching {
                 System.out.println(lastIndexOf.apply(arr,10));
                 System.out.println(lastIndexOf.apply(arr,40));
                 System.out.println(lastIndexOf.apply(arr,100));
+
+                int[] input = {0,0,1,1,1};
+                System.out.println(countOne.apply(input));
 
     }
 }
