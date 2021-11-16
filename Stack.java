@@ -28,6 +28,67 @@ public class Stack {
         }
     }
 
+
+    private int precedence(char ch){
+
+        switch(ch){
+
+            case '+':
+            case '-':
+                return 1;
+
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
+
+            default:
+                return -1;
+        }
+    }
+    
+    public String infixToPostFix(String input){
+
+            int n = input.length();
+            java.util.Stack<Character> stack = new java.util.Stack<Character>();
+
+            String result = new String();
+            for(int i=0;i<n;i++){
+
+                char ch = input.charAt(i);
+
+                if(Character.isLetterOrDigit(ch)){
+                    result+=ch;
+                }
+                else if(ch=='('){
+                    stack.push(ch);
+                }
+                else if(ch==')'){
+
+                    while(!stack.isEmpty() && stack.peek() !='('){
+                        result +=stack.pop();
+                    }
+                    stack.pop();
+                }
+                else{
+
+                    while(!stack.isEmpty() && precedence(ch)<=precedence(stack.peek())){
+
+                        result+=stack.pop();
+                    }
+                    stack.push(ch);
+                }
+            }
+            while(!stack.isEmpty()){
+
+                if(stack.peek()=='(')return "invalid expression";
+                    
+                    result+=stack.pop();
+            }
+            return result;
+    }
+
     public int popNode(){
 
          int pop = 0;
@@ -128,12 +189,12 @@ public class Stack {
         System.out.println(stack.isEmpty());
         System.out.println("********************");
         System.out.println("********************");
-             stack.add(100);
-             stack.add(200);
-             stack.add(300);
-             stack.add(400);
-             stack.add(500);
-             stack.add(600);
+                 stack.add(100);
+                 stack.add(200);
+                 stack.add(300);
+                 stack.add(400);
+                 stack.add(500);
+                 stack.add(600);
         System.out.println(stack.popNode());
         System.out.println(stack.popNode());
         System.out.println(stack.popNode());
@@ -143,6 +204,10 @@ public class Stack {
         System.out.println(stack.popNode());
         System.out.println(stack.peekNode());
 
+        String input = "a+b*c-d/e";
+        input = "a+b*(c^d-e)^(f+g*h)-i";
+
+        System.out.println(stack.infixToPostFix(input));
 
 
     }
