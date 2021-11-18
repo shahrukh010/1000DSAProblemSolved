@@ -1,4 +1,3 @@
-
 public class Queue {
 
 
@@ -6,7 +5,7 @@ public class Queue {
     private static int[] qu;
     private static int front=0;
     private static int rear =1;
-    private static  int size = 0;
+    private static  int size;
 
     public Queue(int capacity){
 
