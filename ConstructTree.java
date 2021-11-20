@@ -36,6 +36,23 @@ public class ConstructTree{
         }
 
     }
+
+        public boolean contains(Node node, int value){
+
+            if(value==node.data)return true;
+
+            else if(value<node.data){
+
+                if(node.left==null)return false;
+                else
+                    return contains(node.left,value);
+            }else{
+                if(node.right==null)return false;
+                else
+                    return contains(node.right,value);
+            }
+        }
+    //inner class object we can't access directly required to object
         public void inOrder(Node node){
 
             if(node !=null){
@@ -46,6 +63,9 @@ public class ConstructTree{
                 inOrder(node.right);
             }
         }
+
+
+
     public static void main(String[]args){
 
         
@@ -56,6 +76,9 @@ public class ConstructTree{
                            node.insert(8);
                            node.insert(15);
                            tree.inOrder(node);
+                           System.out.println(tree.contains(node,15));
+                           System.out.println(tree.contains(node,8));
+                           System.out.println(tree.contains(node,11));
     }
     
 }
