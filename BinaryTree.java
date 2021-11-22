@@ -41,6 +41,31 @@ public class BinaryTree{
         }
     }
 
+    public void postOrder(Node node){
+
+        java.util.Stack<Node> s1 = new java.util.Stack<>();
+        java.util.Stack<Node> s2 = new java.util.Stack<>();
+
+                s1.push(node);
+        while(!s1.isEmpty()){
+
+            if(!s1.isEmpty()){
+                
+                s2.push(s1.pop());
+            }
+            if(s2.peek().left !=null){
+                s1.push(s2.peek().left);
+            }
+            if(s2.peek().right !=null){
+                s1.push(s2.peek().right);
+            }
+        }
+        System.out.println();
+
+        while(!s2.isEmpty()){
+            System.out.println(s2.pop().data);
+        }
+    }
 
 
     public static void main(String...strings){
@@ -55,7 +80,7 @@ public class BinaryTree{
                    tree.node.right.right= new Node(2);
 
                    tree.inOrder(tree.node);
-
+                   tree.postOrder(tree.node);
 
     }
 
